@@ -6,17 +6,60 @@
 
 ---
 
-## 📜 The Mission Briefing
+## � Operation Coordinates (Deployment)
 
-Welcome, Operative.
+**Secure Channel Established.**
 
-**Auction Heists** is not your standard open-air marketplace. It is a **confidential auction house** running on the **Inco Network**. 
+*   **Network:** Base Sepolia Testnet
+*   **The Vault (Contract Address):** [`0x3191890599E531BdDAC9D2002152D8236478304A`](https://sepolia.basescan.org/address/0x3191890599E531BdDAC9D2002152D8236478304A)
+*   **Status:** 🟢 **LIVE** & Listening
 
-Here, you compete for exclusive **NFT Loot** in fast-paced, high-stakes rounds. But there's a catch: **Everything is encrypted.**
+This contract is the heart of the operation. It holds the loot, accepts the encrypted bids, and mathematically determines the winner without ever revealing a single secret.
 
--   🕵️ **Your Bid is Secret:** Only you know what you offered.
--   🔒 **The Winner is Calculated in the Shadows:** We use FHE (Fully Homomorphic Encryption) to find the highest bidder without *ever* decrypting the losing bids.
--   🚫 **No Peeking:** Bots can't frontrun you because they can't see your hand.
+---
+
+## 🎯 The Objective (Purpose)
+
+**The Problem:**
+On standard blockchains like Ethereum, "privacy" is a myth. Every bid you place in an auction is broadcast to the world.
+*   🐋 **Whales** watch your wallet.
+*   🤖 **Bots** frontrun your transactions.
+*   📉 **Snipers** outbid you by a penny at the last second.
+
+**The Solution:**
+**Auction Heists** creates a cryptographic "Dark Room." We use advanced cryptography to allow you to bid blindly.
+*   **No one sees your bid** (not even the developers).
+*   **The highest bidder wins** fairly.
+*   **Zero information leakage.**
+
+---
+
+## 🔐 The Tech (Inco Integration)
+
+We didn't just hide the frontend; we revolutionized the backend. This project is built on the **Inco Network**, an EVM-compatible Layer 1 that brings **Fully Homomorphic Encryption (FHE)** to smart contracts.
+
+### How Inco is Incorporated:
+
+1.  **Encrypted Data Types (`euint256`)**:
+    Instead of storing your bid as a regular number (`uint256`), we store it as an `euint256`. This is a black box that *contains* your number but cannot be opened by anyone without the key.
+
+2.  **Blind Computation**:
+    Normally, to find the highest number, you need to see all the numbers. **Inco's FHEVM** allows the smart contract to perform math on encrypted data.
+    *   *Question:* "Is Encrypted Bid A > Encrypted Bid B?"
+    *   *Answer:* "Yes" (but we still don't know what A or B actually are).
+
+3.  **The Black Box Execution**:
+    All logic happens on-chain. There is no off-chain server or "trusted" party holding the keys. The keys are distributed across the network validators using Threshold FHE.
+
+---
+
+## 🌍 The Significance
+
+Why does this matter? This isn't just a game; it's a blueprint for the future of privacy.
+
+*   **MEV Protection**: Since the bid amount is encrypted, searcher bots cannot calculate the profit of frontrunning you. The "extraction value" is hidden.
+*   **True Digital Sealed-Bids**: For the first time, we have a decentralized equivalent of a sealed envelope. This unlocks use cases for real estate, government tenders, and corporate procurement.
+*   **Fairness**: Wealth doesn't reveal strategy. A small player can outmaneuver a whale because the whale doesn't know the price to beat.
 
 ---
 
@@ -44,13 +87,9 @@ graph LR
     style F fill:#000,stroke:#0f0,color:#fff
 ```
 
-1.  **Recon**: Connect your wallet and inspect the loot.
-2.  **Infiltrate**: Submit your bid. It gets encrypted *on your device* before it even hits the network.
-3.  **Exfiltrate**: When the timer hits zero, the contract computes the winner. If it's you, the NFT is yours. If not, your bid remains a mystery forever.
-
 ---
 
-## 🛡️ The Privacy Shield (How it Works)
+## 🛡️ The Privacy Shield (Visualized)
 
 Traditional blockchains are public. Everyone sees everything. **Inco** is different. It's like computing inside a locked vault.
 
@@ -85,10 +124,6 @@ flowchart TD
     style Math fill:#2d3748,stroke:#4fd1c5,color:#fff
     style Result fill:#2d3748,stroke:#f6e05e,color:#fff
 ```
-
-**Why this matters:**
-*   **Poker Face:** You can bid your true value without worrying about others calling your bluff.
-*   **Anti-Snipe:** Snipers can't see your bid to outbid you by 1 cent at the last second.
 
 ---
 
@@ -130,17 +165,3 @@ Ready to start your first job?
     ```
 
 4.  **Access the Safehouse**: Open `http://localhost:3000`
-
----
-
-## 📡 Intecepted Communications (Contract Info)
-
-*   **Target Network**: Base Sepolia
-*   **Contract Address**: [`0x3191890599E531BdDAC9D2002152D8236478304A`](https://sepolia.basescan.org/address/0x3191890599E531BdDAC9D2002152D8236478304A)
-
----
-
-<div align="center">
-  <p><i>"Loose lips sink ships. Encrypted bids win chips."</i></p>
-  <p>Built with 🔐 <a href="https://inco.network">Inco Protocol</a></p>
-</div>
