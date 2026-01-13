@@ -71,10 +71,10 @@ flowchart TD
     end
 
     subgraph " The Inco Vault (FHE) "
-    CipherA[🔒 Encrypted Bid A]
-    CipherB[🔒 Encrypted Bid B]
-    Math[🧮 Compute Max(A, B)]
-    Result[🏆 Winner is determined]
+    CipherA["🔒 Encrypted Bid A"]
+    CipherB["🔒 Encrypted Bid B"]
+    Math["🧮 Compute Max(A, B)"]
+    Result["🏆 Winner is determined"]
     end
 
     UserA --> BidA -->|Encrypt| CipherA
